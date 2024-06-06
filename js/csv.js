@@ -6,7 +6,7 @@ document.getElementById('downloadCSV').addEventListener('click', function () {
     const header = table.querySelectorAll('thead tr')[1];
     let headerContent = [];
     header.querySelectorAll('th').forEach((cell, index) => {
-        if (index !== 2 && index !== 16) { // 0-based index, 3列目と16列目を除外
+        if (index !== 2 && index !== 17) { // 0-based index, 3列目と16列目を除外
             headerContent.push(cell.innerText);
         }
     });
@@ -17,7 +17,7 @@ document.getElementById('downloadCSV').addEventListener('click', function () {
     rows.forEach(row => {
         let rowContent = [];
         row.querySelectorAll('td').forEach((cell, index) => {
-            if (index !== 2 && index !== 16) { // 0-based index, 3列目と16列目を除外
+            if (index !== 2 && index !== 17) { // 0-based index, 3列目と16列目を除外
                 rowContent.push(cell.innerText);
             }
         });

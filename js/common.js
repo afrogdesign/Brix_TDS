@@ -96,7 +96,7 @@ function getRowData(checkbox) {
   }
 
      // 豆の種類を更新
-      logBeanTypeSpan.textContent = rowData[15];
+      logBeanTypeSpan.textContent = rowData[16];
 
 
 

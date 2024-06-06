@@ -120,6 +120,9 @@
             // 収率を計算
             const extractionYield = (tds * brewAmount) / coffeeWeight;
 
+            // レシオを計算
+            const ratio = Math.floor(hotwater / coffeeWeight);
+
             // 成功判定
             const judgement = successJudgement(tds, extractionYield);
 
@@ -157,6 +160,7 @@
     <td>${tds.toFixed(2)}％</td>
     <td>${extractionYield.toFixed(2)}％</td>
     <td>${judgement.success ? '◯' : '☓'}</td>
+    <td>1:${ratio}</td>
     <td>${temperature}℃</td>
     <td>${coffeeWeight}ｇ</td>
     <td>${hotwater}cc</td>
