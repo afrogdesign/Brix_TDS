@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSVからプルダウンメニューを生成する</title>
+</head>
+<body>
+    <form>
+        <select id="dropdown">
+            <!-- CSVから読み込んだオプションはここに追加されます -->
+        </select>
+    </form>
+
+    <script>
+        // CSVファイルのパス
+        const csvFilePath = 'data.csv';
+
+        // ページ読み込み時に実行する関数
+        window.onload = function() {
+            // CSVファイルを読み込む
+            loadCSV(csvFilePath);
+        };
+
+        // CSVファイルを読み込む関数
+        function loadCSV(filePath) {
+            const request = new XMLHttpRequest();
+            request.open("GET", filePath, true);
+            request.onreadystatechange = function() {
+                if (request.readyState === 4 && request.status === 200) {
+                    // レスポンスを受け取ったらCSVを処理する関数を呼び出す
+                    processCSV(request.responseText);
+                }
+            };
+            request.send(null);
+        }
+
+        // CSVデータを処理し、プルダウンメニューにオプションを追加する関数
+        function processCSV(csvData) {
+            // CSVデータを改行で分割し、各行を配列に格納
+            const rows = csvData.split("\n");
+
+            // プルダウンメニューのセレクト要素を取得
+            const dropdown = document.getElementById("dropdown");
+
+            // グループ用の変数を初期化
+            let currentGroup = null;
+
+            // 各行のデータを処理してオプションを追加
+            rows.forEach(function(row) {
+                // 行をカンマで分割し、各列を配列に格納
+                const columns = row.split(",");
+
+                // グループ名が指定されている場合
+                if (columns.length === 1) {
+                    // グループ要素を作成し、プルダウンメニューに追加
+                    currentGroup = document.createElement("optgroup");
+                    currentGroup.label = columns[0];
+                    dropdown.appendChild(currentGroup);
+                } else {
+                    // オプション要素を作成し、テキストと値を設定してプルダウンメニューに追加
+                    const option = document.createElement("option");
+                    option.text = columns[0]; // CSVの1列目をオプションのテキストに設定
+                    option.value = columns[1]; // CSVの2列目をオプションの値に設定
+
+                    // グループが指定されている場合は、そのグループにオプションを追加
+                    if (currentGroup) {
+                        currentGroup.appendChild(option);
+                    } else {
+                        dropdown.appendChild(option);
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
