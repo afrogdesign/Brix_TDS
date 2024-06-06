@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSVからプルダウンメニューを生成する</title>
+</head>
+<body>
+    <form>
+        <label for="fileInput">CSVファイルをアップロード:</label>
+        <input type="file" id="fileInput" accept=".csv">
+        <br><br>
+        <select id="dropdown">
+            <!-- CSVから読み込んだオプションはここに追加されます -->
+        </select>
+        <br><br>
+        <button type="button" onclick="clearData()">クリア</button>
+    </form>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const contents = e.target.result;
+                    localStorage.setItem('csvData', contents);
+                    processCSV(contents);
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function processCSV(csvData) {
+            // プルダウンメニューをクリア
+            const dropdown = document.getElementById("dropdown");
+            dropdown.innerHTML = "";
+
+            // CSVデータを改行で分割し、各行を配列に格納
+            const rows = csvData.split("\n");
+
+            // グループ用の変数を初期化
+            let currentGroup = null;
+
+            // 各行のデータを処理してオプションを追加
+            rows.forEach(function(row) {
+                // 行をカンマで分割し、各列を配列に格納
+                const columns = row.split(",");
+
+                // グループ名が指定されている場合
+                if (columns.length === 1) {
+                    // グループ要素を作成し、プルダウンメニューに追加
+                    currentGroup = document.createElement("optgroup");
+                    currentGroup.label = columns[0];
+                    dropdown.appendChild(currentGroup);
+                } else {
+                    // オプション要素を作成し、テキストと値を設定してプルダウンメニューに追加
+                    const option = document.createElement("option");
+                    option.text = columns[0]; // CSVの1列目をオプションのテキストに設定
+                    option.value = columns[1]; // CSVの2列目をオプションの値に設定
+
+                    // グループが指定されている場合は、そのグループにオプションを追加
+                    if (currentGroup) {
+                        currentGroup.appendChild(option);
+                    } else {
+                        dropdown.appendChild(option);
+                    }
+                }
+            });
+        }
+
+        // ローカルストレージに保存されたデータをロード
+        window.onload = function() {
+            const storedData = localStorage.getItem('csvData');
+            if (storedData) {
+                processCSV(storedData);
+            }
+        };
+
+        // クリアボタンの機能
+        function clearData() {
+            localStorage.removeItem('csvData');
+            document.getElementById("dropdown").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
