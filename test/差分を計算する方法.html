@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コーヒーBrixからDTSと収率の計算機</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>コーヒーBrixからDTSと収率の計算機</h1>
+    
+    <h2>DTSと収率の計算</h2>
+    <label for="coffeePowder">コーヒー粉 (g):</label>
+    <input type="number" id="coffeePowder" value="15">
+    <br>
+    <label for="coffeeExtract">コーヒー抽出量 (ml):</label>
+    <input type="number" id="coffeeExtract" value="225">
+    <br>
+    <label for="brixValue">Brix値 (%):</label>
+    <input type="number" step="0.01" id="brixValue" value="1.65">
+    <br>
+    <button onclick="calculateDTSYield()">DTSと収率を計算する</button>
+    
+    <h3>結果</h3>
+    <p id="dtsResult">DTS値: </p>
+    <p id="yieldResult">収率: </p>
+    <p id="currentRatio">今のレシオ: </p> <!-- 追加されたレシオ表示 -->
+
+    <h2>理想値に合わせた調整計算</h2>
+    <label for="idealDTS">理想のDTS値 (%):</label>
+    <input type="number" step="0.01" id="idealDTS" placeholder="1.4">
+    <br>
+    <label for="idealYield">理想の収率 (%):</label>
+    <input type="number" step="0.01" id="idealYield" placeholder="18">
+    <br>
+    <button onclick="calculateAdjustments()">調整を計算する</button>
+    
+    <h3>調整方法</h3>
+    <p id="adjustmentAdvice">アドバイス: </p>
+
+    <script>
+        function calculateDTSYield() {
+            // 入力値を取得
+            const coffeePowder = parseFloat(document.getElementById('coffeePowder').value);
+            const coffeeExtract = parseFloat(document.getElementById('coffeeExtract').value);
+            const brixValue = parseFloat(document.getElementById('brixValue').value);
+            
+            // DTSを計算
+            const dts = brixValue * 0.79;
+            // 収率を計算
+            const yield = ((coffeeExtract * dts) / coffeePowder);
+             // レシオを計算
+            const ratio = coffeeExtract / coffeePowder;
+
+            // 結果を表示
+            document.getElementById('dtsResult').innerText = `DTS値: ${dts.toFixed(2)}%`;
+            document.getElementById('yieldResult').innerText = `収率: ${yield.toFixed(2)}%`;
+            document.getElementById('currentRatio').innerText = `今のレシオ: 1:${ratio.toFixed(0)}`; // レシオを表示
+
+        }
+
+        function calculateAdjustments() {
+            // 現在の入力値を取得
+            const coffeePowder = parseFloat(document.getElementById('coffeePowder').value);
+            const coffeeExtract = parseFloat(document.getElementById('coffeeExtract').value);
+            const brixValue = parseFloat(document.getElementById('brixValue').value);
+            const idealDTS = parseFloat(document.getElementById('idealDTS').value);
+            const idealYield = parseFloat(document.getElementById('idealYield').value);
+
+            // 現在のDTSを計算
+            const currentDTS = brixValue * 0.79;
+            // 現在のBrixを計算
+            const targetBrix = idealDTS / 0.79;
+            
+            
+            // 理想の収率を達成するための調整
+            // 1. コーヒー抽出量の調整
+            const idealExtractForYield = (idealYield * coffeePowder) / idealDTS;
+
+            // 2. コーヒー粉の調整
+            const idealPowderForYield = (coffeeExtract * idealDTS) / idealYield;
+
+            const advice = `
+                理想の値を達成するには:
+                1. コーヒー抽出量を ${coffeeExtract} mlから ${idealExtractForYield.toFixed(2)} mlに調整します。
+                2. または、以下のように調整します:
+                - コーヒー粉の量を ${coffeePowder} gから ${idealPowderForYield.toFixed(2)} gに調整します。
+               - Brix値を ${brixValue}% から ${targetBrix.toFixed(2)}% に調整します。
+            `;
+
+            // アドバイスを表示
+            document.getElementById('adjustmentAdvice').innerText = advice;
+        }
+    </script>
+</body>
+</html>

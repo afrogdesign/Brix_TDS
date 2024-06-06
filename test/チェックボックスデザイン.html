@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Checkbox Example</title>
+    <style>
+        /* チェックボックスのスタイル */
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 30px; /* カスタムサイズ */
+            height: 30px; /* カスタムサイズ */
+        }
+
+        /* チェックボックスを隠す */
+        .custom-checkbox input[type="checkbox"] {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* カスタムチェックマーク */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px; /* カスタムサイズ */
+            width: 30px; /* カスタムサイズ */
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        /* チェックされた状態のスタイル */
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* チェックマークのスタイル */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* チェックされた状態のチェックマーク */
+        .custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+            display: block;
+        }
+
+        /* チェックマークのデザイン */
+        .custom-checkbox .checkmark:after {
+            left: 10px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>2024-05-01</td>
+            <td>12:00</td>
+            <td>10%</td>
+            <td>1.53%</td>
+            <td>18%</td>
+            <td>◯</td>
+            <td>85℃</td>
+            <td>20g</td>
+            <td>200cc</td>
+            <td>中挽き</td>
+            <td>中煎り</td>
+            <td>2:00</td>
+            <td>ドリップ</td>
+            <td>アラビカ</td>
+            <td>
+                <label class="custom-checkbox">
+                    <input type="checkbox" class="hikakuCheckbox" onclick="getRowData(this)">
+                    <span class="checkmark"></span>
+                </label>
+            </td>
+        </tr>
+        <!-- 他の行も同様に -->
+    </table>
+
+    <p>豆の種類: <span id="logBeanTypeSpan"></span></p>
+    <canvas id="brewingRatioChart" width="400" height="400"></canvas>
+
+    <button onclick="otherButtonClicked()">他のボタン</button>
+
+    <script>
+        let chart; // グローバル変数として定義
+
+        function getRowData(checkbox) {
+            // チェックボックスの親要素の行を取得
+            const row = checkbox.parentElement.parentElement.parentElement;
+
+            // 他のチェックボックスをクリア
+            const checkboxes = document.querySelectorAll('.hikakuCheckbox');
+            checkboxes.forEach(cb => {
+                if (cb !== checkbox) {
+                    cb.checked = false;
+                }
+            });
+
+            // 行のすべてのセルを取得
+            const cells = row.getElementsByTagName('td');
+
+            // 各セルのデータを取得してログに出力
+            const rowData = [];
+            for (let i = 0; i < cells.length - 1; i++) { // 最後のセルはボタンなので除外
+                rowData.push(cells[i].innerText);
+            }
+
+            // 豆の種類を更新
+            const logBeanTypeSpan = document.getElementById('logBeanTypeSpan');
+            logBeanTypeSpan.textContent = rowData[13];
+
+            // TDSと抽出収率を取得
+            const tds = parseFloat(rowData[3]); // 文字列から浮動小数点数に変換
+            const extractionYield = parseFloat(rowData[4]); // 文字列から浮動小数点数に変換
+
+            console.log('セルから取得したグラフの座標:', tds, extractionYield);
+            console.log('セルの情報全部', rowData);
+            console.log('5番目の情報', rowData[4]);
+
+            // グラフを更新
+            updateChart(tds, extractionYield);
+        }
+
+        function updateChart(tds, extractionYield) {
+            const ctx = document.getElementById('brewingRatioChart').getContext('2d');
+
+            // データセットの初期化
+            const newData = {
+                x: extractionYield,
+                y: tds
+            };
+
+            if (chart) {
+                // 既存のデータを更新してアニメーション
+                chart.data.datasets[0].data[0] = newData;
+                chart.update({
+                    duration: 800, // アニメーションの持続時間（ミリ秒）
+                    easing: 'easeInOutQuad' // アニメーションのイージング関数
+                });
+            } else {
+                // 新しいチャートを作成
+                chart = new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [
+                            {
+                                label: '抽出結果',
+                                data: [newData],
+                                backgroundColor: 'rgba(246, 86, 50, 0.9)',
+                                pointRadius: 10,
+                                pointStyle: 'circle'
+                            },
+                            {
+                                label: '適正範囲',
+                                data: [],
+                                backgroundColor: 'rgba(197, 224, 228, 0.9)',
+                                pointRadius: 0,
+                                type: 'bubble'
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'bottom',
+                                min: 14,
+                                max: 26,
+                                title: {
+                                    display: true,
+                                    text: '収率：Extraction Yield（％）'
+                                }
+                            },
+                            y: {
+                                min: 0.8,
+                                max: 2,
+                                title: {
+                                    display: true,
+                                    text: 'TDS（％）'
+                                }
+                            }
+                        },
+                        plugins: {
+                            annotation: {
+                                annotations: {
+                                    box1: {
+                                        type: 'box',
+                                        xMin: 18,
+                                        xMax: 22,
+                                        yMin: 1.15,
+                                        yMax: 1.55,
+                                        backgroundColor: 'rgba(0, 255, 0, 0.3)',
+                                        borderColor: 'green',
+                                        borderWidth: 1
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    plugins: [{
+                        id: 'background',
+                        beforeDraw: function(chart) {
+                            const ctx = chart.ctx;
+                            ctx.save();
+                            ctx.fillStyle = 'rgba(197, 224, 228, 0.9)';
+                            ctx.fillRect(
+                                chart.scales.x.getPixelForValue(18),
+                                chart.scales.y.getPixelForValue(1.55),
+                                chart.scales.x.getPixelForValue(22) - chart.scales.x.getPixelForValue(18),
+                                chart.scales.y.getPixelForValue(1.15) - chart.scales.y.getPixelForValue(1.55)
+                            );
+                            ctx.restore();
+                        }
+                    }]
+                });
+            }
+        }
+
+        function otherButtonClicked() {
+            // すべてのチェックボックスをクリア
+            const checkboxes = document.querySelectorAll('.hikakuCheckbox');
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+            });
+
+            console.log('他のボタンがクリックされました。チェックボックスをクリアしました。');
+        }
+
+        // ダミーデータで初回のグラフを描画（必要に応じて）
+        updateChart(1.2, 20);
+    </script>
+</body>
+</html>

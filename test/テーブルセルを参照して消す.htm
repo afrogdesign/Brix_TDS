@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table with Checkbox and Button</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    #result {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<table id="myTable">
+    <tr>
+        <th>Number 1</th>
+        <th>Number 2</th>
+        <th>Number 3</th>
+        <th>Number 4</th>
+        <th>Number 5</th>
+        <th>Number 6</th>
+        <th>Number 7</th>
+        <th>Number 8</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td><input type="checkbox" class="checkbox"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td><input type="checkbox" class="checkbox"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+    <!-- Add more rows as needed -->
+</table>
+
+<button onclick="recordCheckedNumbers()">Record Checked Numbers</button>
+
+<div id="result"></div>
+
+<script>
+function recordCheckedNumbers() {
+    const checkboxes = document.querySelectorAll('.checkbox');
+    let checkedNumbers = [];
+    checkboxes.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+            const row = checkbox.parentNode.parentNode;
+            const cell2 = row.cells[1].innerText; // 2nd cell
+            const cell6 = row.cells[5].innerText; // 6th cell
+            checkedNumbers.push(cell2, cell6);
+        }
+    });
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerText = "Checked Cells: " + checkedNumbers.join(", ");
+}
+
+function deleteRow(button) {
+    const row = button.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+}
+</script>
+
+</body>
+</html>

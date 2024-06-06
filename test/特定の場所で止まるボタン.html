@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Example</title>
+    <style>
+        .confirmButton {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #target {
+            margin-top: 1000px; /* デモ用にスクロールを実感するために大きめに設定 */
+            padding: 20px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="scrollToTarget()" class="confirmButton">確認する</button>
+
+    <div id="target">ここがターゲットの場所です。</div>
+
+    <script>
+        function scrollToTarget() {
+            const targetElement = document.getElementById('target');
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

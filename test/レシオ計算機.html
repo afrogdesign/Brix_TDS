@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コーヒーレシオ逆算ツール</title>
+    <script>
+        function calculate() {
+            const ratio = parseFloat(document.getElementById("ratio").value);
+            const waterAmount = 1000; // 湯量は常に1000ml
+
+            // コーヒー粉の計算（小数点以下四捨五入）
+            const coffeeGrounds = Math.round(waterAmount / ratio);
+            document.getElementById("coffeeGrounds").innerText = coffeeGrounds + " g";
+
+            // 実際のコーヒー抽出量の計算
+            const actualExtraction = waterAmount - (coffeeGrounds * 1.65 + 15);
+            document.getElementById("actualExtraction").innerText = actualExtraction.toFixed(2) + " ml";
+
+            // 各TDS値に対する収率の計算
+            const tdsValues = [0.8, 1.6, 2.0];
+            tdsValues.forEach(tds => {
+                const yield = (tds / 100) * actualExtraction / coffeeGrounds * 100;
+                document.getElementById("yield" + tds.toFixed(1).replace('.', '')).innerText = yield.toFixed(2) + " %";
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>ブリューレシオ逆算ツール</h1>
+    <label for="ratio">レシオを選んでくりゃれ:</label>
+    <select id="ratio" onchange="calculate()">
+        <option value="0">レシオを選ぶ</option>
+        <option value="12">1:12</option>
+        <option value="12.5">1:12.5</option>
+        <option value="13">1:13</option>
+        <option value="13.5">1:13.5</option>
+        <option value="14">1:14</option>
+        <option value="14.5">1:14.5</option>
+        <option value="15">1:15</option>
+        <option value="15.5">1:15.5</option>
+        <option value="16">1:16</option>
+        <option value="16.5">1:16.5</option>
+        <option value="17">1:17</option>
+        <option value="17.5">1:17.5</option>
+        <option value="18">1:18</option>
+        <option value="18.5">1:18.5</option>
+        <option value="19">1:19</option>
+        <option value="19.5">1:19.5</option>
+        <option value="20">1:20</option>
+        <option value="20.5">1:20.5</option>
+        <option value="21">1:21</option>
+        <option value="21.5">1:21.5</option>
+        <option value="22">1:22</option>
+        <option value="25">1:25</option>
+    </select>
+
+    <h2>出力</h2>
+    <p>珈琲粉: <span id="coffeeGrounds">- g</span></p>
+    <p>実際の珈琲抽出量: <span id="actualExtraction">- ml</span></p>
+    <p>TDS値が0.8%の場合の収率: <span id="yield08">- %</span></p>
+    <p>TDS値が1.6%の場合の収率: <span id="yield16">- %</span></p>
+    <p>TDS値が2.0%の場合の収率: <span id="yield20">- %</span></p>
+</body>
+</html>

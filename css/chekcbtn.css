@@ -1,0 +1,71 @@
+/* チェックボックスのスタイル */
+.custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 20px; /* カスタムサイズ */
+    height: 20px; /* カスタムサイズ */
+}
+
+/* チェックボックスを隠す */
+.custom-checkbox input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none; /* チェックボックスのクリックイベントを無効にする */
+}
+
+/* カスタムチェックマーク */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px; /* カスタムサイズ */
+    width: 20px; /* カスタムサイズ */
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* チェックされた状態のスタイル */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background-color: #2196F3;
+}
+
+/* チェックマークのスタイル */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* チェックされた状態のチェックマーク */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+    display: block;
+}
+
+/* チェックマークのデザイン */
+.custom-checkbox .checkmark:after {
+    left: 7px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* 行全体のクリックでチェックボックスをトグル */
+tr {
+    cursor: pointer;
+}
+
+tr button {
+    cursor: default; /* ボタンは通常のカーソル */
+}
+
+tr td {
+    position: relative;
+}
+
+tr td label {
+    cursor: pointer; /* ラベルもクリック可能 */
+}

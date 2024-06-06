@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAG TOWN COFFEEレシピ考案｜Brixアプリβ版</title>
+    <script src="js/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
+    </script>
+    <link rel="stylesheet"  type="text/css" href="css/reset.css">
+ 
+    <link rel="stylesheet"  type="text/css" href="css/mine.css">
+    <link rel="stylesheet" type="text/css" href="css/scroll.css">
+    <link rel="stylesheet" type="text/css" href="css/chekcbtn.css">
+    <link rel="stylesheet"  type="text/css" href="css/faq.css">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-84XW7WEFSK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-84XW7WEFSK');
+</script>
+
+<body>
+    <div class="form_div">
+    <h1>BAG TOWN COFFEE<br>レシピ考案アプリ&#9749;</h1>
+    <br>
+    <h5>Powered by STRAWBERRY FROG LAB. - ver.3.1 β版</h5>
+    <div id="coffeebox">
+    <div id="BTCBOX">
+        <div class="input-group">
+            <label for="beanType">🫘 豆の種類</label>
+            <select id="beanType">
+                <option value="不明な珈琲豆">不明な珈琲豆</option>
+                <optgroup label="R3">
+                    <option value="グァテマラ ゲイシャ">グァテマラ ゲイシャ</option>
+                    <option value="グァテマラ パカマラ">グァテマラ パカマラ</option>
+                    <option value="グァテマラ Finca La Soledad H1">グァテマラ Finca La Soledad H1</option>
+                    <option value="ニカラグア マラカツーラ W">ニカラグア マラカツーラ W</option>
+                    <option value="ニカラグア La Picona パライネマ">ニカラグア La Picona パライネマ</option>
+                    <option value="ニカラグア El Povenir パカマラ N">ニカラグア El Povenir パカマラ N</option>
+                    <option value="ニカラグア La Picona マラカツーラ H">ニカラグア La Picona マラカツーラ H</option>
+                    <option value="エルサルバドル MACHUCA LA MINA">エルサルバドル MACHUCA LA MINA</option>
+                    <option value="インドネシア Padmana CM N">インドネシア Padmana CM N</option>
+                    <option value="イエメン アナエロ">イエメン アナエロ</option>
+                    <option value="インドネシア COE2023 ＃１">インドネシア COE2023 ＃１</option>
+                    <option value="ジャマイカ ブルーマウンテン">ジャマイカ ブルーマウンテン</option>
+                </optgroup>
+                <optgroup label="R5">
+                    <option value="エチオピア KONGA washed">エチオピア KONGA washed</option>
+                    <option value="中国 YUNNAN TIAN YU">中国 YUNNAN TIAN YU</option>
+                    <option value="グァテマラ SanAntonio">グァテマラ SanAntonio</option>
+                    <option value="ブラジル SuldeMinas">ブラジル SuldeMinas</option>
+                </optgroup>
+                <optgroup label="R6">
+                    <option value="ウガンダ Mt ELGON">ウガンダ Mt ELGON</option>
+                    <option value="コロンビア スプレモ カフェインレス">コロンビア スプレモ カフェインレス</option>
+                    <option value="グァテマラ MARIRIAGE">グァテマラ MARIRIAGE</option>
+                </optgroup>
+                <optgroup label="R7">
+                    <option value="ルワンダ MUZO">ルワンダ MUZO</option>
+                    <option value="エチオピア KONGA N">エチオピア KONGA N</option>
+                    <option value="ボリビア MAMANI">ボリビア MAMANI</option>
+                    <option value="タンザニア ピーベリー">タンザニア ピーベリー</option>
+                    <option value="エルサルバドル MACHUCA LA MINA">エルサルバドル MACHUCA LA MINA</option>
+                    <option value="エルサルバドル COLOZOゲイシャ">エルサルバドル COLOZOゲイシャ</option>
+                    <option value="ブラジル esperanca Topazio">ブラジル esperanca Topazio</option>
+                    <option value="ケニア SAFARI">ケニア SAFARI</option>
+                </optgroup>
+
+                <optgroup label="R5">
+                    <option value="NEW DAYS ブレンド">NEW DAYS ブレンド</option>
+                </optgroup>
+                <optgroup label="R5.5">
+                    <option value="ESP">ESP</option>
+                </optgroup>
+                <optgroup label="R7">
+                    <option value="Plic Ploc">Plic Ploc</option>
+                </optgroup>
+                <optgroup label="R8">
+                    <option value="マンデリン スマトラ SERIBU RAJA">マンデリン スマトラ SERIBU RAJA</option>
+                </optgroup>
+
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="roastLevel">🔥 焙煎</label>
+            <select id="roastLevel">
+                <option value="浅煎り">浅煎り</option>
+                <option value="中煎り">中煎り</option>
+                <option value="深煎り">深煎り</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="grindSize">🪨 粒度<span class="comment">（メッシュ）</span></label>
+            <select id="grindSize">
+                <option value="G1">G1</option>
+                <option value="G2" selected>G2</option>
+                <option value="G3" >G3</option>
+                <option value="G4">G4</option>
+                <option value="G5">G5</option>
+                <option value="G6">G6</option>
+                <option value="G7">G7</option>
+                <option value="G8">G8</option>
+                <option value="G9">G9</option>
+                <option value="G10">G10</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="temperature">🌡️ お湯の温度</label>
+            <div class="input-wrapper">
+                <input type="number" id="temperature" min="0" max="100" step="5" value="90" oninput="syncSlider('temperature', 'temperatureSlider')">
+            <span class="unit">℃</span>
+                </div>
+                <input type="range" id="temperatureSlider" min="0" max="100" step="5" value="90" oninput="syncInput('temperature', 'temperatureSlider')">
+        </div>
+        
+        <div class="input-group">
+            <label for="coffeeWeight">🥄 珈琲粉の重量</label>
+            <div class="input-wrapper">
+                <input type="number" id="coffeeWeight" min="0" step="1" value="15" oninput="syncSlider('coffeeWeight', 'coffeeWeightSlider')">
+                <span class="unit">ｇ</span>
+            </div>
+            <input type="range" id="coffeeWeightSlider" min="0" max="100" step="1" value="15" oninput="syncInput('coffeeWeight', 'coffeeWeightSlider')">
+        </div>
+
+        <div class="input-group">
+            <label for="brewTime">⏱️ 抽出時間</label>
+            <div class="input-wrapper">
+               <input type="number" id="brewTime" min="0" step="15" value="180" oninput="syncSlider('brewTime', 'brewTimeSlider')">
+                <span class="unit">秒</span>
+            </div>
+            <input type="range" id="brewTimeSlider" min="60" max="300" step="15" value="180" oninput="syncInput('brewTime', 'brewTimeSlider')">
+        </div>
+
+        <div class="input-group">
+            <label for="hotwater">🫖 注いだお湯量</label>
+            <div class="input-wrapper">
+            <input type="number" id="hotwater" min="0" step="5" value="225" oninput="syncSlider('hotwater', 'hotwaterSlider')">   <span class="unit">ml</span>
+            </div>
+            <input type="range" id="hotwaterSlider" min="0" max="500" step="5" value="225" oninput="syncInput('hotwater', 'hotwaterSlider')">
+            <button onclick="updateBrewAmount()" class="yosokubtn" >☕️ 抽出量を予測</button>
+        </div>
+
+        <div class="input-group">
+            <label for="brewAmount">🫗 珈琲の抽出量</label>
+            <div class="input-wrapper">
+            <input type="number" id="brewAmount" min="0" step="5" value="195" oninput="syncSlider('brewAmount', 'brewAmountSlider')">
+            <span class="unit">ml</span>
+            </div>
+            <input type="range" id="brewAmountSlider" min="5" max="500" step="5" value="195" oninput="syncInput('brewAmount', 'brewAmountSlider')">
+        </div>
+        <div class="input-group">
+            <label for="brewMethod">💧 抽出方法</label>
+            <select id="brewMethod">
+                <option value="Kalita／46メソッド">Kalita・46メソッド</option>
+                <option value="TUBAME／46メソッド">TUBAME・46メソッド</option>
+                <option value="SIMPLIFY the Brewer">SIMPLIFY the Brewer</option>
+                <option value="その他">その他</option>
+                <optgroup label="46メソッドバリエーション">
+                <option value="1湯目：20ml-30秒／46メソッド">1湯目：20ml-30秒／46メソッド</option>
+                <option value="1湯目：20ml-45秒／46メソッド">1湯目：20ml-45秒／46メソッド</option>
+                <option value="1湯目：30ml-30秒／46メソッド">1湯目：30ml-30秒／46メソッド</option>
+                <option value="1湯目：30ml-45秒／46メソッド">1湯目：30ml-45秒／46メソッド</option>
+                <option value="1湯目：45ml-30秒／46メソッド">1湯目：45ml-30秒／46メソッド</option>
+                <option value="1湯目：45ml-45秒／46メソッド">1湯目：45ml-45秒／46メソッド</option>
+                <option value="その他">その他</option>
+
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="brix"><span class="brixtxt">Brix値<span class="comment">（0〜25％）</span></span></label>
+            <div class="input-wrapper">
+            <input type="number" id="brix" min="0" step="0.01" value="1.83" oninput="syncSlider('brix', 'brixSlider')">
+            <span class="unit">％</span>
+            </div>
+            <input type="range" id="brixSlider" min="0" max="3" step="0.01" value="1.58" oninput="syncInput('brix', 'brixSlider')">
+        </div>
+
+        <button onclick="calculate()"  class="confirmButton">確認する</button>
+
+        </div>
+    </div>
+    </div>
+    <div id="result"></div>
+    <div id="hiddenDiv">
+        <hr>
+       
+<div class="coffeeChart">
+    <div class="container">  <canvas id="brewingRatioChart" width="800px" height="800px"></canvas></div>
+   </div>
+   
+
+    <div class="table-wrap">
+    <table id="log">
+        <thead>
+            <tr>
+                <th colspan="17" style="text-align:left;">現在の表示:【 <span id="logBeanType">豆の名前</span>】
+                    <span class="download-container">
+                        <button id="downloadCSV">CSVでダウンロード📄⬇️</button></span></th>
+            </tr>
+            <tr>
+                <th>記録</th>
+                <th>　-　</th>
+                <th>表示</th>
+                <th>Brix</th>
+                <th>TDS</th>
+                <th>収率</th>
+                <th>判定</th>
+                <th>湯温</th>
+                <th>粉量</th>
+                <th>湯量</th>
+                <th>抽出量</th>
+                <th>粒度</th>
+                <th>焙煎</th>
+                <th>時間</th>
+                <th>抽出方法</th>
+                <th>豆種</th>
+                <th>-</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    </div>
+
+
+    <div class="coffeeACC">
+        <div class="coffeeACCCC">
+    <img class="ChartImg" src="img/SCAA_brew_chart.png">
+<p class="comment SCAA">縦軸がTDS(Total Dissolved Solids)でコーヒーの濃度。コーヒーの液体の中に水以外の成分がどれだけ入っているか。横軸がPE(Percent Extraction)もしくはEY(Extraction Yield)で収率。収率は
+使用したコーヒーの粉から何％抽出されたのか。どれだけ効率よく成分を抽出したのかという指標。</p></div></div>
+
+
+
+<!-- FAQ読み込み　ここから -->
+
+<section class="qa sec">
+    <h2 class="pageSubTitle pageSubTitle--center">
+        レシピ調整について
+        <span>イメージ通りに抽出結果をコントロールする方法</span>
+    </h2>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">メッシュを細かくすると</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">TDSは上がり、収率も上がる<br>(濃くなり、苦くなる)</p>
+            </dd>
+        </dl>
+    </div>
+     <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">湯温を上げると</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">TDSは上がり、収率も上がる。<br>(濃くなり、苦くなる)</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">抽出時間を長くすると</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">TDSは上がり、収率も上がる。<br>(濃くなり、苦くなる)</p>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="qa__box">
+      <dl>
+          <dt class="js-qa__parent">
+              <span>Q</span>
+              <h3 class="pageSubTitle2">攪拌を強めると</h3>
+              <div class="crossBar"></div>
+          </dt>
+          <dd class="qa__child">
+              <span>A</span>
+              <p class="contentText">TDSは上がり、収率も上がる。<br>(濃くなり、苦くなる)</p>
+          </dd>
+      </dl>
+  </div>
+    <div class="qa__box">
+      <dl>
+          <dt class="js-qa__parent">
+              <span>Q</span>
+              <h3 class="pageSubTitle2">粉量を増やす（お湯を減らす）と <br>※収率だけ逆になるので注意</h3>
+              <div class="crossBar"></div>
+          </dt>
+          <dd class="qa__child">
+              <span>A</span>
+              <p class="contentText">TDSは上がり、収率は下がる<br>(濃くなり、酸っぱくなる)</p>
+          </dd>
+      </dl>
+  </div>
+  <div class="qa__box">
+    <dl>
+        <dt class="js-qa__parent">
+            <span>Q</span>
+            <h3 class="pageSubTitle2">粉量が増えると収率が下がる理由</h3>
+            <div class="crossBar"></div>
+        </dt>
+        <dd class="qa__child">
+            <span>A</span>
+            <p class="contentText">お湯に対して粉の量が多いと各粒子に行き渡る水の量が相対的に少なくなるため、十分に抽出されにくいので収率は低くなる</p>
+        </dd>
+    </dl>
+</div>
+
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">思い通りの結果を出すコツ</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">コーヒー粉の粒度や粉の量、湯温など変えて適正抽出を目指す必要があるが、どれか1つの要素を調整して適正抽出を目指すのが良い。一番わかりやすく簡単なのは「粒度（メッシュ）」の調整だけ変えてみる方法。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">収率（TEX値）が低めの状態で美味しかった場合</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">TDS1.15~1.55％をキープした時に収率が低すぎる場合、より多くの豆を使用している。それだけ原価が上がる。同じ味で収率を上げるレシピにしたほうが賢い。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">美味しいバランスの調整を行った時にどうしても収率が低すぎる場合</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">珈琲豆が持っているポテンシャル以上にはできない。その場合は、豆の品質や状態を疑っても良いかもしれない。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">アプリ活用法①結果に応じてアドバイスが表示される</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">コーヒーの抽出結果に基づいて適正範囲に到達するための改善点が表示される。アドバイスを考慮しつつ調整を繰り返せば、必ず思い通りの味にコントロールできるようになる。<br class="spacer">意識する要素は「酸味←→苦味」「薄い←→濃い」のたったのふたつ。そのふたつの要素を意識しながら、淹れ方を工夫すればよい。もちろん自分の味覚や感覚を大切にしつつ最善のレシピに微調整する。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">アプリ活用法②コントロールチャートの座標で比べてみる</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">ログ一覧の表をクリックすると☑️チェックマークが付き、記録がチャートに反映される。チャート上の座標はリアルタイムで動くので、過去の抽出結果と現在の結果を視覚的に比較することが可能。<br class="spacer">抽出条件の変更がコーヒーの味に与える影響を直感的に理解でき、さらなる改善に役立てることができる。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">収率が下がると酸っぱくなる理由</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">最初の段階で、酸味やフルーティな風味を持つ酸性化合物（クロロゲン酸やクエン酸など）が最初に抽出される。次に、甘味やバランスを取る化合物が抽出され、最後に苦味や収斂味（しゅうれんみ｜口の水分を持っていかれるような感覚の味）を持つ化合物が抽出される。<br class="spacer">つまり十分な時間や適切な条件で抽出されない場合、最初の段階で抽出される酸性化合物が主にカップに入ることになる。これにより、珈琲の風味は酸味が強くなり、甘味やバランスを取る化合物が十分に抽出されないため、全体の味わいは不完全で、酸っぱく感じられる。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
+                <h3 class="pageSubTitle2">珈琲が酸っぱくなる理由を化学方程式で説明</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">クロロゲン酸が分解されてキナ酸とカフェ酸に変わる。化学反応を化学式で表すと</>
+    
+                    クロロゲン酸の化学式はC16H18O9で、これが加水分解されるとキナ酸（C7H12O6）とカフェ酸（C9H8O4）に分解される。<br class="spacer">
+                    
+                    **反応式:**<br>
+                    クロロゲン酸 (C16H18O9)+H2O→キナ酸 (C7H12O6)+カフェ酸 (C9H8O4)<br class="spacer">
+                    
+                    具体的な反応過程を示すと：<br>
+                    
+                    1. クロロゲン酸 (C16H18O9) が加水分解される。<br>
+                    2. キナ酸 (C7H12O6) とカフェ酸 (C9H8O4) に分解される。<br class="spacer">
+                    
+                    この反応は加水分解反応の一例で、水分子（H2O）が関与することでクロロゲン酸のエステル結合が切断され、二つの異なる酸に変わる。特にキナ酸は酸味を強く感じさせる要因となる。</p>
+            </dd>
+        </dl>
+    </div>
+</section>
+
+<script src="js/faq.js"></script>
+
+  <!-- FAQ読み込み　ここまで -->
+
+  <p id="page-top"><a href="#">再入力<br>する</a></p>
+<p><span class="comment r">© 2024 AFROG DESIGN UNIT 　-　Powered by STRAWBERRY FROG LABORATORY</span></p>
+</div>
+
+<script src="js/csv.js">
+//CSVファイルダウンロードためのスクリプト
+</script>
+
+<script src="js/brixtoTDS.js">
+        //Brix to DTSのスクリプト
+    </script>
+          <script src="js/common.js">
+            //自動スクロールのための
+            </script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!--自作のJS-->
+<script src="js/scroll.js"></script>
+
+</body>
+</html>

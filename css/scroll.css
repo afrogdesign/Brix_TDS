@@ -1,0 +1,92 @@
+/*リンクの形状*/
+#page-top a{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	background:#942D2F;
+	border-radius: 10px;
+
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase; 
+	text-decoration: none;
+	
+	transition:all 0.3s;
+}
+
+#page-top a:hover{
+	background: #777;
+}
+
+/*リンクを右下に固定*/
+#page-top {
+	position: fixed;
+	right: 10px;
+	bottom:10px;
+	z-index: 2;
+    /*はじめは非表示*/
+	opacity: 0;
+	transform: translateX(110px);
+	z-index: 100; /* この要素が一番上に表示される */
+}
+
+/*　左の動き　*/
+
+#page-top.LeftMove{
+	animation: LeftAnime 0.5s forwards;
+}
+
+@keyframes LeftAnime{
+  from {
+    opacity: 0;
+	transform: translateX(110px);
+  }
+  to {
+    opacity: 1;
+	transform: translateX(0);
+  }
+}
+
+/*　右の動き　*/
+
+#page-top.RightMove{
+	animation: RightAnime 0.5s forwards;
+}
+@keyframes RightAnime{
+  from {
+  	opacity: 1;
+	transform: translateX(0);
+  }
+  to {
+  	opacity: 1;
+	transform: translateX(110px);
+  }
+}
+
+/* PC用のスタイル */
+@media (min-width: 768px) {
+
+	#page-top a{
+
+		width: 100px;
+		height: 100px;
+		font-size: 1rem;
+		line-height: 1.5;
+
+
+	}
+
+}
+
+/* iPhone用のスタイル */
+@media (max-width: 767px) {
+
+
+	#page-top a{
+
+		width: 70px;
+		height: 70px;
+		line-height: 1.5;
+		font-size:0.8rem;
+	}
+}

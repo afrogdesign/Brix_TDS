@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Coffee Brewing Control Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e8ec;
+            text-align: center;
+        }
+        #chart-container {
+            width: 70%; /* キャンバスの幅を変更 */
+            height: 700px; /* キャンバスの高さを変更 */
+            position: relative;
+            margin: auto;
+        }
+        h1 {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #2b3a42;
+        }
+    </style>
+</head>
+<body>
+    <h1>Figure 1: Classic Coffee Brewing Control Chart</h1>
+    <div id="chart-container">
+        <canvas id="extractionChart"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('extractionChart').getContext('2d');
+
+        const data = {
+            datasets: []
+        };
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                maintainAspectRatio: false, // アスペクト比を維持しない
+                responsive: true, // チャートのリサイズを有効にする
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: '収率％：EXTRACTION: Solubles Yield',
+                            font: {
+                                size: 16
+                            },
+                        },
+                        min: 14,
+                        max: 26,
+                        ticks: {
+                            stepSize: 1, // マス目を増やす
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    y: {                 
+                        title: {
+                            display: true,
+                            text: 'STRENGTH: Solubles Concentration（TDS％）',
+                            font: {
+                                size: 16
+                            },
+                        },
+                        min: 0.80,
+                        max: 1.9, // 縦軸の範囲を増やす
+                        ticks: {
+                            stepSize: 0.05, // マス目を増やす
+                            callback: function(value) {
+                                // 一つ飛ばしでラベルを表示
+                                return (Math.round(value * 100) % 10 === 0 ? value.toFixed(2) + '%' : '');
+                            }
+                        }
+                    },
+                    y2: {
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'BREWING RATIO: Grams per Liter',
+                            color: 'rgba(0, 123, 255, 0.6)',
+                            font: {
+                                size: 16
+                            },
+                            padding: {
+                                bottom: 20
+                            }
+                        },
+                        afterBuildTicks: function(axis) {
+                            // タイトルを右にずらす
+                            axis.right += 50;
+                        },
+                        ticks: {
+                            display: false // メモリのラベルを非表示にする
+                        },
+                        grid: {
+                            drawOnChartArea: false // グリッドラインを右側の軸には表示しない
+                        }
+                    }
+  
+                },
+                plugins: {
+                    annotation: {
+                        annotations: {
+                            line0: {
+                                type: 'line',
+                                xMin: 8.53,
+                                xMax: 21.32,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:12｜80g',
+                                    position: 'end',
+                                    xAdjust: -15,
+                                    yAdjust: -15,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line1: {
+                                type: 'line',
+                                xMin: 9.78,
+                                xMax: 24.30,
+                                yMin: 0.80,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:14｜70g',
+                                    position: 'end',
+                                    xAdjust: -10,
+                                    yAdjust: -15,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line2: {
+                                type: 'line',
+                                xMin: 10.80,
+                                xMax: 27,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:15｜65g',
+                                    position: 'end',
+                                    xAdjust: 　20,
+                                    yAdjust: 　-15,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line3: {
+                                type: 'line',
+                                xMin: 11.60,
+                                xMax: 29,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:16｜60g',
+                                    position: 'end',
+                                    xAdjust: 20,
+                                    yAdjust: -35,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line4: {
+                                type: 'line',
+                                xMin: 12.75,
+                                xMax: 31.88,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:18｜55g',
+                                    position: 'end',
+                                    xAdjust: 20,
+                                    yAdjust: -30,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line5: {
+                                type: 'line',
+                                xMin: 14.44,
+                                xMax: 36.10,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:16｜50g',
+                                    position: 'end',
+                                    xAdjust: 20,
+                                    yAdjust: -30,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line6: {
+                                type: 'line',
+                                xMin: 16.19,
+                                xMax: 40.48,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:22｜45g',
+                                    position: 'end',
+                                    xAdjust: 20,
+                                    yAdjust: -30,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            line7: {
+                                type: 'line',
+                                xMin: 18.38,
+                                xMax: 45.95,
+                                yMin: 0.8,
+                                yMax: 2, // 縦軸の範囲を増やす
+                                borderColor: 'rgba(0, 123, 255, 0.6)',
+                                borderWidth: 1,
+                                borderDash: [5, 0],
+                                label: {
+                                    enabled: true,
+                                    content: '1:25｜40g',
+                                    position: 'end',
+                                    xAdjust: 20,
+                                    yAdjust: -30,
+                                    backgroundColor: 'rgba(0, 123, 255, 0.6)',
+                                    color: 'white',
+                                    padding: 5,
+                                    cornerRadius: 5,
+                                        font: {
+                                        size: 10, // フォントサイズを指定
+                                        weight: 'lighter' // フォントの太さを指定（細いフォント）
+                                    }
+                                }
+                            },
+                            // 9分割のボックスアノテーション
+                            box1: {
+                                type: 'box',
+                                xMin: 14,
+                                xMax: 18,
+                                yMin: 0.80,
+                                yMax: 1.15,
+                                backgroundColor: 'rgba(255, 206, 86, 0.0)',
+                                borderWidth: 0
+                            },
+                            box2: {
+                                type: 'box',
+                                xMin: 18,
+                                xMax: 22,
+                                yMin: 0.80,
+                                yMax: 1.15,
+                                backgroundColor: 'rgba(75, 192, 192, 0.15)',
+                                borderWidth: 0.3
+                            },
+                            box3: {
+                                type: 'box',
+                                xMin: 22,
+                                xMax: 26,
+                                yMin: 0.80,
+                                yMax: 1.15,
+                                backgroundColor: 'rgba(255, 159, 64, 0.0)',
+                                borderWidth: 0
+                            },
+                            box4: {
+                                type: 'box',
+                                xMin: 14,
+                                xMax: 18,
+                                yMin: 1.15,
+                                yMax: 1.55,
+                                backgroundColor: 'rgba(153, 102, 255, 0.0)',
+                                borderWidth: 0.3
+                            },
+                            box5: {
+                                type: 'box',
+                                xMin: 18,
+                                xMax: 22,
+                                yMin: 1.15,
+                                yMax: 1.55,
+                                backgroundColor: 'rgba(75, 192, 192, 0.4)',
+                                borderWidth: 1.5,
+                                borderColor: 'rgba(75, 192, 192, 0.5)',
+                            },
+                            box6: {
+                                type: 'box',
+                                xMin: 22,
+                                xMax: 26,
+                                yMin: 1.15,
+                                yMax: 1.55,
+                                backgroundColor: 'rgba(255, 99, 132, 0.0)',
+                                borderWidth: 0.3
+                            },
+                            box7: {
+                                type: 'box',
+                                xMin: 14,
+                                xMax: 18,
+                                yMin: 1.55,
+                                yMax: 2,
+                                backgroundColor: 'rgba(75, 192, 192, 0.0)',
+                                borderWidth: 0
+                            },
+                            box8: {
+                                type: 'box',
+                                xMin: 18,
+                                xMax: 22,
+                                yMin: 1.55,
+                                yMax: 2,
+                                backgroundColor: 'rgba(75, 192, 192, 0.15)',
+                                borderWidth: 0.3
+                            },
+                            box9: {
+                                type: 'box',
+                                xMin: 22,
+                                xMax: 26,
+                                yMin: 1.55,
+                                yMax: 2,
+                                backgroundColor: 'rgba(75, 192, 192, 0.0)',
+                                borderWidth: 0
+                            },
+                        }
+                    }
+                }
+            }
+        };
+
+        const extractionChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>

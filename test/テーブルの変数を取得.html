@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Row Data Retrieval</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>${date}</td>
+            <td>${time}</td>
+            <td>${brix}％</td>
+            <td>${tds.toFixed(2)}％</td>
+            <td>${extractionYield.toFixed(2)}％</td>
+            <td>${success ? '◯' : '☓'}</td>
+            <td>${temperature}℃</td>
+            <td>${coffeeWeight}ｇ</td>
+            <td>${brewAmount}cc</td>
+            <td>${grindSize}</td>
+            <td>${roastLevel}</td>
+            <td>${countTime}</td>
+            <td>${brewMethod}</td>
+            <td>${beanType}</td>
+            <td><button onclick="getRowData(this)">取得ボタン</button></td>
+        </tr>
+        <!-- 他の行も同様に -->
+    </table>
+
+    <script>
+        function getRowData(button) {
+            // ボタンの親要素の行を取得
+            const row = button.parentElement.parentElement;
+
+            // 行のすべてのセルを取得
+            const cells = row.getElementsByTagName('td');
+
+            // 各セルのデータを取得してログに出力
+            const rowData = [];
+            for (let i = 0; i < cells.length - 1; i++) { // 最後のセルはボタンなので除外
+                rowData.push(cells[i].innerText);
+            }
+
+            console.log(rowData);
+
+            // 必要に応じて、データを他の処理に渡すことができます
+            // 例: alert(JSON.stringify(rowData));
+        }
+    </script>
+</body>
+</html>

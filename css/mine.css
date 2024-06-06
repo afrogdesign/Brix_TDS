@@ -1,0 +1,528 @@
+
+  body {
+    font-family: 'Roboto','Noto Sans JP', sans-serif,Arial;
+
+    font-size: 20pt;
+    margin: 0px;
+    background-color: rgb(43, 31, 31);
+    color: rgb(77, 77, 77);
+
+      
+}
+h1 {
+    font-size: 30px;
+    margin-top: 50px;
+    display: grid;
+    place-items: center; /* 左右中央に配置 */
+    font-weight: 600;
+    line-height: 1.3;
+   
+}
+h5 {
+    margin-top: -10px;
+    margin-bottom: 50px;
+    font-size: 12px;
+    font-weight: lighter;
+    display: grid;
+    place-items: center; /* 左右中央に配置 */
+}
+
+
+
+label {
+    display: block;
+}
+
+input, select {
+    font-size: 20pt;
+    width: 180px;
+    height: 50px;
+    box-sizing: border-box;
+    margin: 15px;
+    color: black; /* 文字色を黒に設定 */
+    border-radius: 8px; /* 角丸の半径 */
+}
+
+button {
+    margin: 15px;
+    border-radius: 10px;
+
+}
+
+input[type="range"] {
+    width: 100%; /* スライダーの幅を100%に設定 */
+    margin-top: -15px; /* 上側にスペースを追加 */  
+     
+}
+input[type="range"] {
+    -webkit-appearance: none;  /* Safari */
+    appearance: none;
+    width: 225px;
+    height: 10px;
+    background: rgb(105, 42, 42);  /* スライダーの棒の色 */
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    position: relative;  /* 相対位置を使用 */
+    left: -22px;  /* 左に100px移動 */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;  /* Safari */
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: rgb(247, 144, 0);  /* つまみの色 */
+    cursor: pointer;
+    border-radius: 50%;  /* 丸い形にする */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: rgb(247, 144, 0);  /* つまみの色 */
+    cursor: pointer;
+    border-radius: 50%;  /* 丸い形にする */
+}
+
+
+#coffeebox {
+    display: grid;
+    place-items: center; /* 左右中央に配置 */
+
+}
+
+
+.input-group {
+    margin-bottom: 38px;
+
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    padding: 10px;
+    font-size: 25px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding-right: 30px; /* 右側にスペースを追加 */
+}
+
+.input-wrapper .unit {
+    position: absolute;
+    right: 80px; /* テキストを右端に配置 */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 25px;
+    pointer-events: none; /* テキストをクリックできないようにする */
+}
+
+ /* 入力部分の横幅 */
+#BTCBOX {
+    margin: 30px;
+    width: 220px;
+ 
+}
+
+.form_div {
+    color: rgb(255, 240, 222);           
+   }
+
+
+
+
+/* ボタンを中央に配置するためのスタイル */
+
+#downloadCSV {
+    margin-bottom: 0px;
+    background-color: rgb(153, 230, 59);
+    color: rgb(98, 98, 98);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+/*お湯の予測ボタン*/
+.yosokubtn{    
+    font-size: 15px;
+    background-color: #4D9BC1;
+    color: rgb(252, 252, 252);
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0px;
+
+}
+
+/*テーブルのセルの情報を消すボタン*/
+.shokyoBtn{
+    margin: 0px;
+    font-size: 12px;
+    background-color: rgb(110, 117, 120);
+    color: rgb(252, 252, 252);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/*CSVダウンロードボタン*/
+
+#downloadCSV{
+    float: right;
+    margin-top: -5px;
+}
+
+
+#result {
+    color: rgb(255, 255, 255);
+    text-align: center; /* 中央揃え */
+
+}
+
+.success {
+     display: inline-block; /* ラインがテキストの長さに合わせて引かれるようにする */
+    font-size: 24px; /* テキストのサイズ */
+    font-weight: bold; /* 太字 */
+    color: rgb(127, 243, 65); /* テキストの色 */
+    border-bottom: 4px solid rgb(127, 243, 65); /* 下線の色と太さ */
+    margin: 25px;
+}
+.failure {
+    display: inline-block; /* ラインがテキストの長さに合わせて引かれるようにする */
+    font-size: 20px; /* テキストのサイズ */
+    font-weight: bold; /* 太字 */
+    line-height: 1.5;
+    color: red;; /* テキストの色 */
+    border-bottom: 4px solid red;; /* 下線の色と太さ */
+    margin: 25px;
+
+}
+.comment {
+   font-size: small; 
+   position: relative;
+   display: inline-block;
+   
+}
+
+
+#coffeeGif{
+    width: 190px;
+    border-radius: 8%; /* 画像を丸くマスク */
+}
+
+/*コピーライト*/
+.r {
+    color: #666666;
+    display: block; /* ブロック要素にする */
+    margin: 0 auto; /* 左右中央に配置する */
+    width: fit-content; /* テキストの幅に合わせる */
+    text-align: center; /* テキストを中央揃えにする */
+    padding: 20px;
+}
+
+.bluetxt{
+    color: #1dccd8;
+    font-size: 120%;
+    font-weight: 600;
+    display: inline-block;
+    padding-top: 15px;
+}
+
+.brixtxt{
+    color: #1dccd8;
+    font-size: 120%;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;  /* 相対位置を使用 */
+    right: -13px;  /* 右に-10px移動 */
+    bottom: -12px;  /* 下に-10px移動 */
+    
+}
+
+
+
+
+.confirmButton {
+font-size: 20pt;
+display: inline-block;
+width: 120%;
+max-width: 400px; /* ボタン幅 */
+position: relative;
+background: #4D9BC1; /* 背景色 */
+border: 2px solid #4D9BC1;
+padding: 1em 1.6em;
+font-weight: bold;
+color: #fff; /* 文字色 */
+text-decoration: none;
+text-align: center;
+transition-duration: 0.3s;
+
+position: relative;  /* 相対位置を使用 */
+right: 18%;  /* 右に-10px移動 */
+top: -15px;  /* 下に-10px移動 */
+}
+
+.confirmButton:before {
+content: '';
+width: 8px;
+height: 8px;
+border: 0;
+border-top: 2px solid #fff; /* 矢印の色 */
+border-right: 2px solid #fff; /* 矢印の色 */
+transform: rotate(45deg);
+position: absolute;
+top: 50%;
+left: 25px;
+margin-top: -6px;
+}
+
+/* マウスオーバーした際のデザイン */
+.confirmButton:hover {
+background: #fff; /* 背景色 */
+color: #4D9BC1; /* 文字色 */
+}
+
+.confirmButton:hover:before {
+border-top: 2px solid #4D9BC1; /* 矢印の色 */
+border-right: 2px solid #4D9BC1; /* 矢印の色 */
+}
+
+.table-wrap {
+    width: 100%;
+     overflow-x: scroll; 
+
+    }
+
+
+
+  /* PC用のスタイル */
+@media (min-width: 768px) {
+    .ChartImg {
+        width: 500px;
+        height: auto;
+        margin-top: 100px;
+        display: inline-block; /* ブロックをインラインブロックに変更 */
+        text-align: left; /* 左揃え */
+        
+    }
+    .SCAA {
+        width: 80%;
+        color: #5f929c;
+        margin-top:15px;
+        margin-bottom: 80px;
+        line-height: 1.5;
+        display: inline-block; /* ブロックをインラインブロックに変更 */
+        text-align: left; /* 左揃え */
+        
+    }
+
+    table {
+        width: 50%; /* テーブルの幅を設定 */
+        border-collapse: collapse; /* ボーダーの重なりを解消 */
+        margin: 0 auto; /* テーブルを中央に配置 */
+    }
+    body{
+        background-repeat: no-repeat;
+        background-image: url('../img/bagtowncoffee.png');
+        background-size: 200px 200px; /* 任意の大きさを指定 */
+        background-position: calc(50% - 224px) 0% /* 左右中央から左に300pxの位置 */
+      }
+
+      .advice {
+        font-size: small; 
+        position: relative;
+        top: -20px;
+        display: inline-block;
+        width: 350px;
+        height: 140px;
+        text-align: left; /* 文字を左揃えにする */
+        line-height: 1.5;
+     }
+
+     .ThinkGif {
+        width: 38px;
+        position: relative;
+        right: 10px;
+        top: -15px;
+        border-radius: 10%; /* 画像を丸くマスク */
+    }
+     
+}
+
+/* iPhone用のスタイル */
+@media (max-width: 767px) {
+
+    body{
+      background-repeat: no-repeat;
+      background-image: url('../img/bagtowncoffee.png');
+      background-size: 150px 150px; /* 任意の大きさを指定 */
+      background-position: calc(50% - 158px) 175px /* 左右中央から左に300pxの位置 */
+    }
+
+    .ChartImg {
+        width: 100%;
+        height: auto;
+        margin-top: 80px;
+
+    }
+    .SCAA {
+        width: 80%;
+        margin: 5px 30px 70px 30px; /* 上右下左 */
+        text-align: justify; /* 左右両端揃え */
+        color: #5f929c;
+        margin-top:15px;
+        margin-bottom: 80px;
+        line-height: 1.7;
+    }
+
+    .advice {
+        font-size: small; 
+        position: relative;
+        top: -10px;
+        display: inline-block;
+        width: 250px;
+        height: 140px;
+        line-height: 1.5;
+
+        text-align: left; /* 文字を左揃えにする */
+     }
+
+     .ThinkGif {
+        width: 38px;
+        position: relative;
+        right: 10px;
+        top: -25px;
+        border-radius: 10%; /* 画像を丸くマスク */
+    }
+
+
+}
+
+
+
+
+/*最初に結果エリアを非表示にする*/
+#hiddenDiv {
+    background-color: #e0e8ec;
+display: none;
+}
+
+.coffeeACC {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffeeACCCC {
+    text-align: center; /* 中央揃え */
+}
+
+
+
+
+#log {
+    font-size: 16PX;
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 10px;
+    
+
+}
+#log th, #log td {
+    border: 1px solid #4a5565;
+    padding: 8px;
+    white-space: nowrap;
+    text-align: center;
+
+}
+#log th {
+    background-color: #667680;
+}
+
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+th {
+    color: rgb(218, 218, 218);
+}
+
+tr:hover {
+    background-color: rgba(184, 225, 216, 0.315);
+}
+td {
+    border-bottom: 2px solid #515151;
+}
+table, th, td {
+    border: 1px solid #454545;
+}
+
+.log-success {
+    background-color: rgba(184, 225, 216, 0.774);
+}
+
+/*チャートのサイズに関する*/
+
+.coffeeChart {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e8ec;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    text-align: center; /* 親要素の中央揃え */
+
+}
+
+canvas {
+
+    letter-spacing: 0.5px; /* 文字間を2pxに設定 */
+    width: 374px !important;
+    height: 450px !important;
+    display: block; /* 子要素の設定 */
+    margin: auto;
+    background-image: url('../img/TDS-SP.png');
+    background-repeat: no-repeat; /* 背景画像をリピートしない */
+    background-size: cover; /* 背景画像をコンテナに合わせる */
+    background-position: center; /* 背景画像を中央に配置する */
+}
+
+/* PC版のときに横幅を600pxに設定するメディアクエリ */
+@media (min-width: 768px) {
+    canvas {
+
+        width: 500px !important;
+        height: 600px !important;
+        display: block; /* 子要素の設定 */
+        margin: auto;
+        background-image: url('../img/TDS.png');
+        background-repeat: no-repeat; /* 背景画像をリピートしない */
+        background-size: cover; /* 背景画像をコンテナに合わせる */
+        background-position: center; /* 背景画像を中央に配置する */
+    }
+}
+
+   
