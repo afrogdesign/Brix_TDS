@@ -96,7 +96,7 @@ function getRowData(checkbox) {
   }
 
      // 豆の種類を更新
-      logBeanTypeSpan.textContent = rowData[14];
+      logBeanTypeSpan.textContent = rowData[15];
 
 
 
@@ -108,7 +108,7 @@ function getRowData(checkbox) {
    //console.log('セルの情報全部',rowData);
    
    //console.log('5番目の情報',rowData[4]);
-   //console.log('更新した豆の名前',logBeanTypeSpan.textContent);
+   console.log('更新した豆の名前',logBeanTypeSpan.textContent);
        
       // 成功判定
        const judgement = successJudgement(tds, extractionYield);
