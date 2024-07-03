@@ -3,7 +3,7 @@ const csvFilePath = 'https://docs.google.com/spreadsheets/d/1RAFJ0sAgW7GC7mtG8_C
 
 // ページ読み込み時に実行する関数
 window.onload = function() {
-    console.log("ページが読み込まれました。");
+    //console.log("ページが読み込まれました。");
     // CSVファイルを読み込む
     loadCSV(csvFilePath);
 };
@@ -15,8 +15,8 @@ function loadCSV(filePath) {
     request.onreadystatechange = function() {
         if (request.readyState === 4) {
             if (request.status === 200) {
-                console.log("CSVファイルが読み込まれました。");
-                console.log("CSVデータ:", request.responseText);
+                //console.log("CSVファイルが読み込まれました。");
+                //console.log("CSVデータ:", request.responseText);
                 // レスポンスを受け取ったらCSVを処理する関数を呼び出す
                 processCSV(request.responseText);
             } else {
@@ -29,10 +29,10 @@ function loadCSV(filePath) {
 
 // CSVデータを処理し、プルダウンメニューにオプションを追加する関数
 function processCSV(csvData) {
-    console.log("CSVデータを処理中...");
+    //console.log("CSVデータを処理中...");
     // CSVデータを改行で分割し、各行を配列に格納
     const rows = csvData.split("\n");
-    console.log("行データ:", rows);
+    //console.log("行データ:", rows);
 
     // プルダウンメニューのセレクト要素を取得
     const beanType = document.getElementById("beanType");
@@ -54,7 +54,7 @@ function processCSV(csvData) {
             currentGroup = document.createElement("optgroup");
             currentGroup.label = row.slice(1, -1).trim();
             beanType.appendChild(currentGroup);
-            console.log("新しいグループを追加:", currentGroup.label);
+            //console.log("新しいグループを追加:", currentGroup.label);
         } else {
             // オプション要素を作成し、テキストと値を設定してプルダウンメニューに追加
             const option = document.createElement("option");
@@ -67,8 +67,8 @@ function processCSV(csvData) {
             } else {
                 beanType.appendChild(option);
             }
-            console.log("オプションを追加:", option.text, option.value);
+            //console.log("オプションを追加:", option.text, option.value);
         }
     });
-    console.log("CSVデータの処理が完了しました。");
+    //console.log("CSVデータの処理が完了しました。");
 }
