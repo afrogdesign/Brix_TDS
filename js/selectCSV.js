@@ -1,4 +1,5 @@
 // GoogleスプレッドシートからのCSVファイルのパス
+//グループラベルは[]で囲む。それ以外は名前を書くだけでOK!
 const csvFilePath = 'https://docs.google.com/spreadsheets/d/1RAFJ0sAgW7GC7mtG8_Cw5UlI-GQp4mbQYf30dqdYUJs/export?format=csv';
 
 // ページ読み込み時に実行する関数

@@ -17,7 +17,7 @@ document.getElementById('downloadCSV').addEventListener('click', function () {
     rows.forEach(row => {
         let rowContent = [];
         row.querySelectorAll('td').forEach((cell, index) => {
-            if (index !== 2 && index !== 17) { // 0-based index, 3列目と16列目を除外
+            if (index !== 2 && index !== 17) { // 0-based index, 3列目と18列目を除外
                 rowContent.push(cell.innerText);
             }
         });

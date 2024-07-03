@@ -5,7 +5,7 @@
       "name": "index",
       "type": "chrome",
       "request": "launch",
-      "url": "http://127.0.0.1:3000/index.html",
+      "url": "http://127.0.0.1:3002/index.html",
       "webRoot": "${workspaceFolder}",
       "sourceMaps": true
     },
@@ -13,7 +13,15 @@
       "name": "test",
       "type": "chrome",
       "request": "launch",
-      "url": "http://127.0.0.1:3000/test/test.html",
+      "url": "http://127.0.0.1:3002/test/test.html",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
+    },
+    {
+      "name": "csv_save",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://127.0.0.1:3002/googlesheet/",
       "webRoot": "${workspaceFolder}",
       "sourceMaps": true
     }

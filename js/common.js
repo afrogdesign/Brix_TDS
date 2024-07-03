@@ -96,13 +96,13 @@ function getRowData(checkbox) {
   }
 
      // 豆の種類を更新
-      logBeanTypeSpan.textContent = rowData[16];
+      logBeanTypeSpan.textContent = rowData[3];
 
 
 
   // TDSと抽出収率を取得
-      const tds = parseFloat(rowData[4]); // 文字列から浮動小数点数に変換
-      const extractionYield = parseFloat(rowData[5]); // 文字列から浮動小数点数に変換
+      const tds = parseFloat(rowData[14]); // 文字列から浮動小数点数に変換
+      const extractionYield = parseFloat(rowData[15]); // 文字列から浮動小数点数に変換
       
    //console.log('セルから取得したグラフの座標:',tds, extractionYield);
    //console.log('セルの情報全部',rowData);

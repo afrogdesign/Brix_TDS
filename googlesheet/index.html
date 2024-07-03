@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSVをGoogleスプレッドシートに保存</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <h1>CSVをGoogleスプレッドシートに保存</h1>
+    <form id="csvForm">
+        <label for="data">CSVデータを入力してください（カンマ区切り）:</label>
+        <textarea id="data" rows="10"></textarea>
+        <label for="sheetUrl">GoogleスプレッドシートのURLを入力してください:</label>
+        <input type="text" id="sheetUrl" placeholder="https://docs.google.com/spreadsheets/d/...">
+        <button type="button" id="saveButton">Googleスプレッドシートに保存</button>
+    </form>
+    <div id="g_id_onload"
+         data-client_id="116682380772-gghd3e918ugmcnr110ne9cdqhchnhnhc.apps.googleusercontent.com"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-size="large">
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

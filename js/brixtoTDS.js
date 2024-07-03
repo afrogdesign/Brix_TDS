@@ -156,20 +156,20 @@
             <span class="checkmark"></span>
         </label>
     </td>
+    <td>${beanType}</td>
+    <td>${roastLevel}</td>
+    <td>1:${ratio}</td>
+    <td>${coffeeWeight}ｇ</td>
+    <td>${grindSize}</td>
+    <td>${temperature}℃</td>
+    <td>${hotwater}cc</td>
+    <td>${countTime}</td>
+    <td>${brewMethod}</td>
+    <td>${brewAmount}cc</td>
     <td>${brix}％</td>
     <td>${tds.toFixed(2)}％</td>
     <td>${extractionYield.toFixed(2)}％</td>
-    <td>${judgement.success ? '◯' : '☓'}</td>
-    <td>1:${ratio}</td>
-    <td>${temperature}℃</td>
-    <td>${coffeeWeight}ｇ</td>
-    <td>${hotwater}cc</td>
-    <td>${brewAmount}cc</td>
-    <td>${grindSize}</td>
-    <td>${roastLevel}</td>
-    <td>${countTime}</td>
-    <td>${brewMethod}</td>
-    <td>${beanType}</td>
+    <td>${judgement.success ? '◯' : '☓'}</td>  
     <td><button class="shokyoBtn" onclick="deleteRow(this); event.stopPropagation();">消去</button></td>
 </tr>`;
 logTableBody.insertAdjacentHTML('beforeend', logRow);

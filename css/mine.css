@@ -41,6 +41,8 @@ input, select {
     margin: 15px;
     color: black; /* 文字色を黒に設定 */
     border-radius: 8px; /* 角丸の半径 */
+    white-space: nowrap; /* テキストの折り返しを禁止 */
+    overflow: hidden; /* はみ出した部分を隠す */
 }
 
 button {

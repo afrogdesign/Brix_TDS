@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAG TOWN COFFEEレシピ考案｜Brixアプリβ版</title>
-    <script src="js/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
-    </script>
     <link rel="stylesheet"  type="text/css" href="css/reset.css">
- 
     <link rel="stylesheet"  type="text/css" href="css/mine.css">
     <link rel="stylesheet" type="text/css" href="css/scroll.css">
     <link rel="stylesheet" type="text/css" href="css/chekcbtn.css">
     <link rel="stylesheet"  type="text/css" href="css/faq.css">
+    <script src="js/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
     <script src="js/selectCSV.js"></script>
 </head>
 
@@ -30,7 +28,7 @@
     <div class="form_div">
     <h1>BAG TOWN COFFEE<br>レシピ考案アプリ&#9749;</h1>
     <br>
-    <h5>Powered by STRAWBERRY FROG LAB. - ver.3.1 β版</h5>
+    <h5>Powered by STRAWBERRY FROG LAB. - ver.4.0 β版</h5>
     <div id="coffeebox">
     <div id="BTCBOX">
         <div class="input-group">
@@ -163,20 +161,20 @@
                 <th>記録</th>
                 <th>　-　</th>
                 <th>表示</th>
+                <th>豆種</th>
+                <th>焙煎</th>
+                <th>レシオ</th>
+                <th>粉量</th>
+                <th>粒度</th>
+                <th>湯温</th>
+                <th>湯量</th>
+                <th>時間</th>
+                <th>抽出方法</th>
+                <th>抽出量</th>
                 <th>Brix</th>
                 <th>TDS</th>
                 <th>収率</th>
                 <th>判定</th>
-                <th>レシオ</th>
-                <th>湯温</th>
-                <th>粉量</th>
-                <th>湯量</th>
-                <th>抽出量</th>
-                <th>粒度</th>
-                <th>焙煎</th>
-                <th>時間</th>
-                <th>抽出方法</th>
-                <th>豆種</th>
                 <th>-</th>
             </tr>
         </thead>
@@ -285,7 +283,7 @@
         <dl>
             <dt class="js-qa__parent">
                 <span>Q</span>
-                <h3 class="pageSubTitle2">思い通りの結果を出すコツ</h3>
+                <h3 class="pageSubTitle2">思い通りの結果を出すコツ①</h3>
                 <div class="crossBar"></div>
             </dt>
             <dd class="qa__child">
@@ -298,12 +296,25 @@
         <dl>
             <dt class="js-qa__parent">
                 <span>Q</span>
+                <h3 class="pageSubTitle2">思い通りの結果を出すコツ②</h3>
+                <div class="crossBar"></div>
+            </dt>
+            <dd class="qa__child">
+                <span>A</span>
+                <p class="contentText">チャートを見る時に一番大切なのは青い斜めの線「レシオライン」。どんなに湯温やメッシュを調整しても、レシオラインに沿って上下しかしない。レシオラインが適正範囲に入っていなければ、そもそも適正範囲になることはない。まずはレシオラオンを意識してレシピを作ることが大切。</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="qa__box">
+        <dl>
+            <dt class="js-qa__parent">
+                <span>Q</span>
                 <h3 class="pageSubTitle2">収率（TEX値）が低めの状態で美味しかった場合</h3>
                 <div class="crossBar"></div>
             </dt>
             <dd class="qa__child">
                 <span>A</span>
-                <p class="contentText">TDS1.15~1.55％をキープした時に収率が低すぎる場合、より多くの豆を使用している。それだけ原価が上がる。同じ味で収率を上げるレシピにしたほうが賢い。</p>
+                <p class="contentText">TDS1.15~1.55％をキープした時に収率が低すぎる場合、より多くの豆を使用している。それだけ原価が上がる。収率を上げて味のバランスを調整したレシピのほうが良い。</p>
             </dd>
         </dl>
     </div>
@@ -342,7 +353,7 @@
             </dt>
             <dd class="qa__child">
                 <span>A</span>
-                <p class="contentText">ログ一覧の表をクリックすると☑️チェックマークが付き、記録がチャートに反映される。チャート上の座標はリアルタイムで動くので、過去の抽出結果と現在の結果を視覚的に比較することが可能。<br class="spacer">抽出条件の変更がコーヒーの味に与える影響を直感的に理解でき、さらなる改善に役立てることができる。</p>
+                <p class="contentText">ログ一覧の表をクリックすると☑️チェックマークが付き、記録がチャートに反映される。チャートの赤い丸の座標が動くので、過去の抽出結果と現在の結果を比較することが可能。<br class="spacer">抽出条件の変更がコーヒーの味に与える変化を直感的に理解できる。改善点をイメージしやすい。</p>
             </dd>
         </dl>
     </div>
@@ -355,7 +366,7 @@
             </dt>
             <dd class="qa__child">
                 <span>A</span>
-                <p class="contentText">最初の段階で、酸味やフルーティな風味を持つ酸性化合物（クロロゲン酸やクエン酸など）が最初に抽出される。次に、甘味やバランスを取る化合物が抽出され、最後に苦味や収斂味（しゅうれんみ｜口の水分を持っていかれるような感覚の味）を持つ化合物が抽出される。<br class="spacer">つまり十分な時間や適切な条件で抽出されない場合、最初の段階で抽出される酸性化合物が主にカップに入ることになる。これにより、珈琲の風味は酸味が強くなり、甘味やバランスを取る化合物が十分に抽出されないため、全体の味わいは不完全で、酸っぱく感じられる。</p>
+                <p class="contentText">最初の段階で、酸味やフルーティな風味を持つ酸性化合物（キナ酸やカフェ酸[クロロゲン酸]やクエン酸など）が最初に抽出される。次に、甘味やバランスを取る化合物が抽出され、最後に苦味や収斂味（しゅうれんみ｜口の水分を持っていかれるような感覚の味）を持つ化合物が抽出される。<br class="spacer">つまり十分な時間や適切な条件で抽出されない場合、最初の段階で抽出される酸性化合物が主にカップに入ることになる。これにより、珈琲の風味は酸味が強くなり、甘味やバランスを取る化合物が十分に抽出されないため、全体の味わいは不完全で、酸っぱく感じられる。</p>
             </dd>
         </dl>
     </div>
@@ -370,7 +381,7 @@
                 <span>A</span>
                 <p class="contentText">クロロゲン酸が分解されてキナ酸とカフェ酸に変わる。化学反応を化学式で表すと</>
     
-                    クロロゲン酸の化学式はC16H18O9で、これが加水分解されるとキナ酸（C7H12O6）とカフェ酸（C9H8O4）に分解される。<br class="spacer">
+                    クロロゲン酸の化学式はC16H18O9で、これが加水分解されるとキナ酸（C7H12O6）とカフェ酸（C9H8O4）に分解される（※主に焙煎中）<br class="spacer">
                     
                     **反応式:**<br>
                     クロロゲン酸 (C16H18O9)+H2O→キナ酸 (C7H12O6)+カフェ酸 (C9H8O4)<br class="spacer">
@@ -380,7 +391,7 @@
                     1. クロロゲン酸 (C16H18O9) が加水分解される。<br>
                     2. キナ酸 (C7H12O6) とカフェ酸 (C9H8O4) に分解される。<br class="spacer">
                     
-                    この反応は加水分解反応の一例で、水分子（H2O）が関与することでクロロゲン酸のエステル結合が切断され、二つの異なる酸に変わる。特にキナ酸は酸味を強く感じさせる要因となる。</p>
+                    この反応は加水分解反応の一例で、水分子（H2O）が関与することでクロロゲン酸のエステル結合が切断され、二つの異なる酸に変わる。特にキナ酸は酸味を強く感じさせる要因であり、ドリップの最初の段階で抽出されやすい。</p>
             </dd>
         </dl>
     </div>
